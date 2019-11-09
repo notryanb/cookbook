@@ -127,7 +127,7 @@ you can organize your json payloads inside a file.
 
 ```json
 {
-  "my_payload" {
+  "my_payload": {
     "title": "foo",
     "body": "bar",
     "userId": 1
