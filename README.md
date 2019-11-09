@@ -15,7 +15,7 @@ Configure your path.
 > config --set [path $nu:path]
 
 Configure your environment variables
-> config --set [end $nu:env]
+> config --set [env $nu:env]
 
 How to list your paths
 
