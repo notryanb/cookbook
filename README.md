@@ -99,7 +99,7 @@ Output
   2 │ APPDATA                         │ C:\Users\nu_shell\AppData\Roaming
   3 │ CLASSPATH                       │ .;C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip
   4 │ COLUMNS                         │ 80
-  5 │ COMPUTERNAME                    │ NOTRYANB-PC
+  5 │ COMPUTERNAME                    │ nu_shell
   6 │ ChocolateyInstall               │ C:\ProgramData\chocolatey
   7 │ ChocolateyLastPathUpdate        │ Sun Oct  8 16:37:30 2017
 ━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -136,7 +136,7 @@ A good way to become familiar with all that nu has to offer is by utilizing the 
 
 How to see all supported commands:
 
-`help commands`
+`help commands | first 10`
 
 Output
 
@@ -155,8 +155,6 @@ Output
   8 │ cp          │ Copy files.
   9 │ date        │ Get the current datetime.
  10 │ debug       │ Debug input fed.
- 11 │ echo        │ Echo the arguments back to the user.
- 12 │ edit        │ Edit an existing column to have a new value.
 ━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -312,7 +310,7 @@ Deleted branch post-argument-positions (was 9d34ec9).
 Incrementing the version of a Rust crate.
 The following command runs `ls` afterwards to illustrate `Cargo_new.toml` has been created.
 
-`open "Cargo.toml" | inc package.version | save "Cargo_new.toml | ls"`
+`open Cargo.toml | inc package.version | save Cargo_new.toml | ls`
 
 ```
 ━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━
