@@ -258,6 +258,19 @@ Output
 ━━━┷━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━
 ```
 
+---
+
+Add the output of a pipeline to your clipboard.
+Note, this currently needs to be string output.
+
+`sys | get mem | to-json | clip`
+
+Output pasted from `clip` :)
+
+```
+{"total":17125339136,"free":8653758464,"swap total":34305208320,"swap free":19703889920}
+```
+
 
 ## Parsing
 
