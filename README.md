@@ -378,7 +378,9 @@ Nu keeps track of the file you have opened.
 If you wanted to change the original file instead of creating a new one, you can omit the argument from save.
 
 `open Cargo.toml | inc package.version --minor | save`
-`open Cargo_new.toml | get package.version`
+
+
+`open Cargo.toml | get package.version`
 
 Output
 
