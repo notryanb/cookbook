@@ -322,6 +322,9 @@ Deleted branch post-argument-positions (was 9d34ec9).
 
 Incrementing the version of a Rust crate.
 The following command runs `ls` afterwards to illustrate `Cargo_new.toml` has been created.
+If you omit the optional arguments from `inc`,
+the patch number will be incremented.
+Use `help inc` to get more information.
 
 `open Cargo.toml | inc package.version | save Cargo_new.toml | ls`
 
