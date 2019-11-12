@@ -279,7 +279,7 @@ Note, the `read` plugin is most likely changing its name to `parse` in the futur
 
 How to parse an arbitrary pattern from a string of text into a multi-column table.
 
-`cargo search shells --limit 10 | lines | read "{crate_name} = {value} #{description}"`
+`cargo search shells --limit 10 | lines | read "{crate_name} = {version} #{description}"`
 
 Output
 
