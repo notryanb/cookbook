@@ -534,7 +534,7 @@ you can organize your json payloads inside a file.
 }
 ```
 
-`open payload.json | get my_payload | post https://jsonplaceholder.typicode.com/posts $it.my_payload`
+`open payload.json | get my_payload | post https://jsonplaceholder.typicode.com/posts $it`
 
 Output
 
