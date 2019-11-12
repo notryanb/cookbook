@@ -49,6 +49,7 @@ Output
 ━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━
 ```
 
+---
 
 How to list your paths
 
@@ -81,6 +82,8 @@ Output
 ━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
+
 How to list your environment variables
 
 `config | get env | pivot`
@@ -102,6 +105,8 @@ Output
 ━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
+
 How to get a single environment variable's value
 
 `config | get env.APPDATA` or `config | get env | pick APPDATA`
@@ -114,6 +119,8 @@ How to get a single environment variable's value
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
+
 List path on macOS or Linux if you have not set up your nu `config`
 
 `env | get vars.PATH | split-row ":"`
@@ -121,7 +128,6 @@ List path on macOS or Linux if you have not set up your nu `config`
 List path on Windows, if you have not set up your nu `config`
 
 `env | get vars.Path | split-row ";"`
-
 
 
 ## Help
@@ -154,6 +160,8 @@ Output
 ━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
+
 To find more specific information on a command, use `help <COMMAND>`.
 
 `help fetch`
@@ -172,6 +180,7 @@ parameters:
 flags:
   --raw: fetch contents as text rather than a table
   ```
+
 
 ## System
 
@@ -204,6 +213,8 @@ Output
 ━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━
 ```
 
+---
+
 View all directories in the current directory
 
 `ls | where type == Directory`
@@ -229,6 +240,8 @@ Output
  12 │ tests     │ Directory │          │ 4.1 KB │ 2 months ago │ a week ago   │ a week ago
 ━━━━┷━━━━━━━━━━━┷━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━
 ```
+
+---
 
 Find processes sorted by greatest cpu utilization.
 
@@ -336,6 +349,8 @@ The following command runs `ls` afterwards to illustrate `Cargo_new.toml` has be
 ━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━
 ```
 
+---
+
 Lets check the version
 
 `open Cargo_new.toml | get package.version`
@@ -345,6 +360,8 @@ Output
 ```
 0.4.1
 ```
+
+---
 
 Nu keeps track of the file you have opened.
 If you wanted to change the original file instead of creating a new one, you can omit the argument from save.
@@ -397,6 +414,8 @@ Output
 ━━━┷━━━━━━━━┷━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
+
 Suppose you are querying several endpoints, 
 perhaps with different query parameters and you want to view all the responses as a single dataset.
 You can make use of `$it` to run nu commands on every row of data.
@@ -438,6 +457,7 @@ Output
 ━━━┷━━━━━━━━┷━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
 
 If you specify the `--raw` flag, you'll see 3 separate json objects, one in each row.
 
@@ -473,6 +493,7 @@ Output
 ━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
 
 To combine these responses together into a valid JSON array, you can turn the table into json.
 
@@ -483,6 +504,8 @@ Output
 ```
 [{"userId":1,"id":1,"title":"sunt aut facere repellat provident occaecati excepturi optio reprehenderit","body":"quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"},{"userId":1,"id":2,"title":"qui est esse","body":"est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"},{"userId":1,"id":3,"title":"ea molestias quasi exercitationem repellat qui ipsa sit aut","body":"et iusto sed quo iure\nvoluptatem 
 ```
+
+---
 
 Making a `post` request to an endpoint with a JSON payload.
 To make long requests easier,
@@ -509,6 +532,8 @@ Output
  101
 ━━━━━
 ```
+
+---
 
 We can put this all together into a pipeline where we read data, manipulate it, and then send it back to the API.
 Lets `fetch` a post, `increment` the id, and `post` it back to the endpoint.
