@@ -378,7 +378,7 @@ Output
 
 Fetching JSON from a url
 
-`fetch https://jsonplaceholder.typicode.com/posts` | first 5
+`fetch https://jsonplaceholder.typicode.com/posts | first 5`
 
 Output 
 
