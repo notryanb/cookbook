@@ -9,6 +9,7 @@ All the _recipies_ are available in the `0.5.0` version of Nu with `--all-featur
 - [System](#system)
 - [Git](#git)
 - [HTTP](#http)
+- [Misc](#misc)
 
 
 ## Setup
@@ -128,6 +129,7 @@ List path on macOS or Linux if you have not set up your nu `config`
 List path on Windows, if you have not set up your nu `config`
 
 `env | get vars.Path | split-row ";"`
+
 
 
 ## Help
@@ -301,6 +303,30 @@ Output
 ━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+## Native Shell Programs
+Nu allows you to access native shell programs by escaping the program name with `^`.
+
+`sc` is a Windows CMD program that is used for communicating with the Service Control Manager
+
+`^sc queryex eventlog | lines | trim | read "{key}: {value}"`
+
+Output
+
+```
+━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━
+ # │ key                 │ value
+───┼─────────────────────┼────────────
+ 0 │ SERVICE_NAME        │ eventlog
+ 1 │ TYPE                │ 30  WIN32
+ 2 │ STATE               │ 4  RUNNING
+ 3 │ WIN32_EXIT_CODE     │ 0  (0x0)
+ 4 │ SERVICE_EXIT_CODE   │ 0  (0x0)
+ 5 │ CHECKPOINT          │ 0x0
+ 6 │ WAIT_HINT           │ 0x0
+ 7 │ PID                 │ 1628
+━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━
+```
+
 
 ## Git
 Nu can help with common `Git` tasks like removing all local branches which have been merged into master.
@@ -315,6 +341,29 @@ Output
 
 ```
 Deleted branch post-argument-positions (was 9d34ec9).
+```
+
+Parse formatted commit messages
+
+`git log "--pretty=format:%h - %an, %ar : %s" | read "{hash} - {author}, {message} : {message}"` | first 20
+
+Output
+
+```
+━━━┯━━━━━━━━━┯━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ # │ hash    │ author          │ time        │ message
+───┼─────────┼─────────────────┼─────────────┼──────────────────────────────────────────────────────────────────
+ 0 │ 9d34ec9 │ Jonathan Turner │ 13 days ago │ Merge pull request #891 from nushell/jonathandturner-patch-1
+ 1 │ fd92271 │ Jonathan Turner │ 13 days ago │ Move rustyline dep back to crates
+ 2 │ 2d44b7d │ Jonathan Turner │ 2 weeks ago │ Update README.md
+ 3 │ faccb06 │ Jonathan Turner │ 2 weeks ago │ Merge pull request #890 from jonathandturner/append_prepend
+ 4 │ a9cd6b4 │ Jonathan Turner │ 2 weeks ago │ Format files
+ 5 │ 81691e0 │ Jonathan Turner │ 2 weeks ago │ Add prepend and append commands
+ 6 │ 26f40dc │ Jonathan Turner │ 2 weeks ago │ Merge pull request #889 from jonathandturner/read_plugin
+ 7 │ 3820fef │ Jonathan Turner │ 2 weeks ago │ Add a simple read/parse plugin to better handle text data
+ 8 │ b6824d8 │ Jonathan Turner │ 2 weeks ago │ Merge pull request #886 from notryanb/fetch-from-variable
+ 9 │ e09160e │ Ryan Blecher    │ 2 weeks ago │ add ability to create PathBuf from string to avoid type mismatch
+━━━┷━━━━━━━━━┷━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 
@@ -374,6 +423,41 @@ Output
 ```
 0.4.1
 ```
+
+Parsing a file in a non-standard format
+
+Suppose you have a file with the following format.
+
+```
+band:album:year
+Fugazi:Steady Diet of Nothing:1991
+Fugazi:The Argument:2001
+Fugazi:7 Songs:1988
+Fugazi:Repeater:1990
+Fugazi:In On The Kill Taker:1993
+```
+
+You can parse it into a table.
+
+`open bands.txt | lines | split-column ":" Band Album Year | skip 1 | sort-by Year`
+
+Output 
+
+```
+━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━
+ # │ Band   │ Album                  │ Year
+───┼────────┼────────────────────────┼──────
+ 0 │ Fugazi │ 7 Songs                │ 1988
+ 1 │ Fugazi │ Repeater               │ 1990
+ 2 │ Fugazi │ Steady Diet of Nothing │ 1991
+ 3 │ Fugazi │ In On The Kill Taker   │ 1993
+ 4 │ Fugazi │ The Argument           │ 2001
+━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━
+```
+
+You can alternatively do this using `read`.
+
+`open bands.txt | read "{Band}:{Album}:{Year}" | skip 1 | sort-by Year`
 
 ---
 
@@ -564,3 +648,8 @@ In this particular example, the test endpoint gives back an arbitrary response w
  101
 ━━━━━
 ```
+
+
+## Misc(#misc)
+
+- To finish or "accept" an autocomplete command, press the right arrow key.
