@@ -346,7 +346,7 @@ Deleted branch post-argument-positions (was 9d34ec9).
 
 Parse formatted commit messages
 
-`git log "--pretty=format:%h - %an, %ar : %s" | read "{hash} - {author}, {message} : {message}"` | first 20
+`git log "--pretty=format:%h - %an, %ar : %s" | read "{hash} - {author}, {message} : {message}" | first 20`
 
 Output
 
