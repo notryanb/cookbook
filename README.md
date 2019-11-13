@@ -7,6 +7,7 @@ All the _recipies_ are available in the `0.5.0` version of Nu with `--all-featur
 - [Setup](#setup)
 - [Help](#help)
 - [System](#system)
+- [Files](#files)
 - [Git](#git)
 - [HTTP](#http)
 - [Misc](#misc)
@@ -367,7 +368,7 @@ Output
 ```
 
 
-## Manipulating Files
+## Files
 
 Incrementing the version of a Rust crate.
 The following command runs `ls` afterwards to illustrate `Cargo_new.toml` has been created.
@@ -424,6 +425,22 @@ Output
 0.4.1
 ```
 
+Nu keeps track of the file you have opened.
+If you wanted to change the original file instead of creating a new one, you can omit the argument from save.
+
+`open Cargo.toml | inc package.version --minor | save`
+
+
+`open Cargo.toml | get package.version`
+
+Output
+
+```
+0.5.0
+```
+
+---
+
 Parsing a file in a non-standard format
 
 Suppose you have a file with the following format.
@@ -460,21 +477,6 @@ You can alternatively do this using `read`.
 `open bands.txt | read "{Band}:{Album}:{Year}" | skip 1 | sort-by Year`
 
 ---
-
-Nu keeps track of the file you have opened.
-If you wanted to change the original file instead of creating a new one, you can omit the argument from save.
-
-`open Cargo.toml | inc package.version --minor | save`
-
-
-`open Cargo.toml | get package.version`
-
-Output
-
-```
-0.5.0
-```
-
 
 ## HTTP
 
@@ -650,6 +652,6 @@ In this particular example, the test endpoint gives back an arbitrary response w
 ```
 
 
-## Misc(#misc)
+## Misc
 
 - To finish or "accept" an autocomplete command, press the right arrow key.
