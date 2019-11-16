@@ -278,11 +278,10 @@ Output pasted from `clip` :)
 ## Parsing
 
 Nu offers the ability to do some basic parsing.
-Note, the `read` plugin is most likely changing its name to `parse` in the future.
 
 How to parse an arbitrary pattern from a string of text into a multi-column table.
 
-`cargo search shells --limit 10 | lines | read "{crate_name} = {version} #{description}"`
+`cargo search shells --limit 10 | lines | parse "{crate_name} = {version} #{description}"`
 
 Output
 
@@ -309,7 +308,7 @@ Nu allows you to access native shell programs by escaping the program name with 
 
 `sc` is a Windows CMD program that is used for communicating with the Service Control Manager
 
-`^sc queryex eventlog | lines | trim | read "{key}: {value}"`
+`^sc queryex eventlog | lines | trim | parse "{key}: {value}"`
 
 Output
 
@@ -474,7 +473,7 @@ Output
 
 You can alternatively do this using `read`.
 
-`open bands.txt | read "{Band}:{Album}:{Year}" | skip 1 | sort-by Year`
+`open bands.txt | parse "{Band}:{Album}:{Year}" | skip 1 | sort-by Year`
 
 ---
 
