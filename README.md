@@ -3,9 +3,9 @@
 This Nu Cookbook is a collection of examples to help you get the most out of using Nushell.
 Unless otherwise noted,
 all _recipies_ are available in the `0.5.0` version of Nu with `--all-features` enabled.
-Recipies marked with  `master-only` are available when the nushell is built from source using the `master` branch.
+Recipies marked with  `master-only` are available when nushell is built from source using the `master` branch.
 
-While this cookbook is a series of examples to get you started,
+While this cookbook is a series of examples to help get you started,
 you may want to review the official [nushell book](https://book.nushell.sh/) for a more comprehensive walkthrough.
 
 
@@ -61,7 +61,11 @@ Output
 
 How to list your paths
 
-`echo $nu:path` or `config | get path`
+`echo $nu:path` 
+
+or 
+
+`config | get path`
 
 Output
 
@@ -94,7 +98,11 @@ Output
 
 How to list your environment variables
 
-`echo $nu:env | pivot` or `config | get env | pivot`
+`echo $nu:env | pivot` 
+
+or 
+
+`config | get env | pivot`
 
 Output
 
@@ -117,7 +125,11 @@ Output
 
 How to get a single environment variable's value
 
-`config | get env.APPDATA` or `config | get env | pick APPDATA`
+`config | get env.APPDATA` 
+
+or 
+
+`config | get env | pick APPDATA`
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
