@@ -1,7 +1,13 @@
 # Nu Cookbook
 
 This Nu Cookbook is a collection of examples to help you get the most out of using Nushell.
-All the _recipies_ are available in the `0.5.0` version of Nu with `--all-features` enabled.
+Unless otherwise noted,
+all _recipies_ are available in the `0.5.0` version of Nu with `--all-features` enabled.
+Recipies marked with  `master-only` are available when the nushell is built from source using the `master` branch.
+
+While this cookbook is a series of examples to get you started,
+you may want to review the official [nushell book](https://book.nushell.sh/) for a more comprehensive walkthrough.
+
 
 ## Sections
 - [Setup](#setup)
@@ -16,8 +22,8 @@ All the _recipies_ are available in the `0.5.0` version of Nu with `--all-featur
 ## Setup
 To get the most out of nu,
 it is important to setup your path and env for easy access.
-There are ways to view these values and variable,
-but setting up your nu configuration will make it much easier as these are supported cross-platform.
+There are other ways to view these values and variables,
+however setting up your nu configuration will make it much easier as these are supported cross-platform.
 
 --- 
 
@@ -55,9 +61,7 @@ Output
 
 How to list your paths
 
-`config | get path`
-
-`echo $nu:path`
+`echo $nu:path` or `config | get path`
 
 Output
 
@@ -90,9 +94,7 @@ Output
 
 How to list your environment variables
 
-`config | get env | pivot`
-
-`echo $nu:env | pivot`
+`echo $nu:env | pivot` or `config | get env | pivot`
 
 Output
 
@@ -272,9 +274,13 @@ Output pasted from `clip` :)
 
 Nu offers the ability to do some basic parsing.
 
-How to parse an arbitrary pattern from a string of text into a multi-column table.
 
-`cargo search shells --limit 10 | lines | parse "{crate_name} = {version} #{description}"`
+How to parse an arbitrary pattern from a string of text into a multi-column table.
+Note that for version `0.5.0` the parsing command is called `read`, while the next version of nushell it will be renamed to `parse`.
+
+`cargo search shells --limit 10 | lines | read "{crate_name} = {version} #{description}"`
+
+`cargo search shells --limit 10 | lines | parse "{crate_name} = {version} #{description}"` *master-only*
 
 Output
 
@@ -338,7 +344,7 @@ Deleted branch post-argument-positions (was 9d34ec9).
 
 Parse formatted commit messages
 
-`git log "--pretty=format:%h<nu>%aN<nu>%s<nu>%aD" | lines | split-column "<nu>" sha1 committer desc merged_at | first 20`
+`git log "--pretty=format:%h<nu>%aN<nu>%s<nu>%aD" | lines | split-column "<nu>" sha1 committer desc merged_at | first 10`
 
 
 Output
@@ -362,7 +368,7 @@ Output
 
 ---
 
-View git comitter activity as a `histogram` 
+View git comitter activity as a `histogram` *master-only*
 
 `git log "--pretty=format:%h<nu>%aN<nu>%s<nu>%aD" | lines | split-column "<nu>" sha1 committer desc  merged_at | histogram committer merger | sort-by merger | reverse`
 
@@ -387,74 +393,39 @@ View git comitter activity as a `histogram`
 
 ## Files
 
-Incrementing the version of a Rust crate.
-The following command runs `ls` afterwards to illustrate `Cargo_new.toml` has been created.
-If you omit the optional arguments from `inc`,
-the patch number will be incremented.
+Editing a file and then saving the changes.
+
+Here we are making edits to `Cargo.toml`.
+We increase the patch version of the crate using `inc` and then save it back to the file.
 Use `help inc` to get more information.
 
-`open Cargo.toml | inc package.version | save Cargo_new.toml`
 
-```
-━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━
- #  │ name               │ type      │ readonly │ size     │ created       │ accessed      │ modified
-────┼────────────────────┼───────────┼──────────┼──────────┼───────────────┼───────────────┼───────────────
-  0 │ .azure             │ Directory │          │    —     │ 2 months ago  │ 3 weeks ago   │ 3 weeks ago
-  1 │ .cargo             │ Directory │          │    —     │ 2 months ago  │ 2 months ago  │ 2 months ago
-  2 │ .circleci          │ Directory │          │    —     │ 2 months ago  │ 2 months ago  │ 2 months ago
-  3 │ .editorconfig      │ File      │          │   236 B  │ 2 months ago  │ 2 months ago  │ 2 months ago
-  4 │ .git               │ Directory │          │   4.1 KB │ 2 months ago  │ a minute ago  │ a minute ago
-  5 │ .github            │ Directory │          │    —     │ 2 months ago  │ 2 months ago  │ 2 months ago
-  6 │ .gitignore         │ File      │          │   189 B  │ 2 months ago  │ 2 months ago  │ 2 months ago
-  7 │ .gitpod.Dockerfile │ File      │          │   164 B  │ a month ago   │ a month ago   │ a month ago
-  8 │ .gitpod.yml        │ File      │          │   803 B  │ a month ago   │ a month ago   │ a month ago
-  9 │ assets             │ Directory │          │    —     │ 2 months ago  │ 2 months ago  │ 2 months ago
- 10 │ build.rs           │ File      │          │   1.2 KB │ 3 weeks ago   │ 3 weeks ago   │ 3 weeks ago
- 11 │ Cargo.lock         │ File      │          │ 153.7 KB │ a week ago    │ a week ago    │ a week ago
- 12 │ Cargo.toml         │ File      │          │   4.6 KB │ 2 minutes ago │ 2 minutes ago │ 2 minutes ago
- 13 │ Cargo_new.toml     │ File      │          │   4.5 KB │ now           │ now           │ now
- 14 │ CODE_OF_CONDUCT.md │ File      │          │   3.4 KB │ 2 months ago  │ 2 months ago  │ 2 months ago
- 15 │ debian             │ Directory │          │   4.1 KB │ 2 months ago  │ a month ago   │ a month ago
- 16 │ docker             │ Directory │          │   4.1 KB │ 2 months ago  │ 3 weeks ago   │ 3 weeks ago
- 17 │ docs               │ Directory │          │    —     │ 2 months ago  │ 3 weeks ago   │ 3 weeks ago
- 18 │ features.toml      │ File      │          │   443 B  │ 3 weeks ago   │ 3 weeks ago   │ 3 weeks ago
- 19 │ images             │ Directory │          │    —     │ 2 months ago  │ 2 months ago  │ 2 months ago
- 20 │ LICENSE            │ File      │          │   1.1 KB │ 2 months ago  │ 2 months ago  │ 2 months ago
- 21 │ Makefile.toml      │ File      │          │   647 B  │ 2 months ago  │ 2 months ago  │ 2 months ago
- 22 │ README.md          │ File      │          │  18.5 KB │ 2 minutes ago │ 2 minutes ago │ 2 minutes ago
- 23 │ rust-toolchain     │ File      │          │    17 B  │ a month ago   │ a month ago   │ a month ago
- 24 │ rustfmt.toml       │ File      │          │    16 B  │ 2 months ago  │ 2 months ago  │ 2 months ago
- 25 │ src                │ Directory │          │   4.1 KB │ 2 months ago  │ 2 minutes ago │ 2 minutes ago
- 26 │ target             │ Directory │          │    —     │ a week ago    │ a week ago    │ a week ago
- 27 │ tests              │ Directory │          │   4.1 KB │ 2 months ago  │ 2 minutes ago │ 2 minutes ago
-━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━
-```
-
----
-
-Lets check the version
-
-`open Cargo_new.toml | get package.version`
-
-Output
-
-```
-0.4.1
-```
-
-Nu keeps track of the file you have opened.
-If you wanted to change the original file instead of creating a new one, you can omit the argument from save.
-
-`open Cargo.toml | inc package.version --minor | save`
-
+Read the file's initial contents
 
 `open Cargo.toml | get package.version`
 
 Output
 
-```
-0.5.0
-```
+`0.5.1`
+
+Make the edit to the version number and save it.
+
+Nu keeps track of the file you have opened.
+You may omit the filename argument from `save` if you want to save the changes to the opened file.
+
+`open Cargo.toml | inc package.version --patch | save`
+
+Output
+*none*
+
+View the changes we made to the file.
+
+`open Cargo.toml | get package.version`
+
+Output
+
+`0.5.2`
+
 
 ---
 
