@@ -464,7 +464,9 @@ Output
 
 You can alternatively do this using `read`.
 
-`open bands.txt | parse "{Band}:{Album}:{Year}" | skip 1 | sort-by Year`
+`open bands.txt | read "{Band}:{Album}:{Year}" | skip 1 | sort-by Year`
+
+`open bands.txt | parse "{Band}:{Album}:{Year}" | skip 1 | sort-by Year` *master only*
 
 ---
 
