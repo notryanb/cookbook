@@ -372,6 +372,7 @@ View git comitter activity as a `histogram` *master-only*
 
 `git log "--pretty=format:%h<nu>%aN<nu>%s<nu>%aD" | lines | split-column "<nu>" sha1 committer desc  merged_at | histogram committer merger | sort-by merger | reverse`
 
+```
 ━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  #  │ committer           │ merger
 ────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -389,6 +390,7 @@ View git comitter activity as a `histogram` *master-only*
  11 │ Odin Dutton         │ *
  12 │ Jonathan Rothberg   │ *
  ━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ ```
 
 
 ## Files
