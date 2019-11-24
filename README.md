@@ -57,6 +57,8 @@ How to list your paths
 
 `config | get path`
 
+`echo $nu:path`
+
 Output
 
 ```
@@ -90,6 +92,8 @@ How to list your environment variables
 
 `config | get env | pivot`
 
+`echo $nu:env | pivot`
+
 Output
 
 ```
@@ -121,17 +125,6 @@ How to get a single environment variable's value
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
----
-
-List path on macOS or Linux if you have not set up your nu `config`
-
-`env | get vars.PATH | split-row ":"`
-
-List path on Windows, if you have not set up your nu `config`
-
-`env | get vars.Path | split-row ";"`
-
-
 
 ## Help
 
@@ -139,7 +132,7 @@ A good way to become familiar with all that nu has to offer is by utilizing the 
 
 How to see all supported commands:
 
-`help commands | first 10`
+`help commands`
 
 Output
 
@@ -345,7 +338,8 @@ Deleted branch post-argument-positions (was 9d34ec9).
 
 Parse formatted commit messages
 
-`git log "--pretty=format:%h - %an, %ar : %s" | read "{hash} - {author}, {message} : {message}" | first 20`
+`git log "--pretty=format:%h<nu>%aN<nu>%s<nu>%aD" | lines | split-column "<nu>" sha1 committer desc merged_at | first 20`
+
 
 Output
 
@@ -366,6 +360,30 @@ Output
 ━━━┷━━━━━━━━━┷━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+---
+
+View git comitter activity as a `histogram` 
+
+`git log "--pretty=format:%h<nu>%aN<nu>%s<nu>%aD" | lines | split-column "<nu>" sha1 committer desc  merged_at | histogram committer merger | sort-by merger | reverse`
+
+━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ #  │ committer           │ merger
+────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────
+  0 │ Jonathan Turner     │ ****************************************************************************************************
+  1 │ Andrés N. Robalino  │ ***********************
+  2 │ Yehuda Katz         │ **************
+  3 │ est31               │ *****
+  4 │ Thomas Hartmann     │ ****
+  5 │ Sean Hellum         │ **
+  6 │ Patrick Meredith    │ **
+  7 │ Fahmi Akbar Wildana │ **
+  8 │ Vanessa Sochat      │ *
+  9 │ Shaurya Shubham     │ *
+ 10 │ Pirmin Kalberer     │ *
+ 11 │ Odin Dutton         │ *
+ 12 │ Jonathan Rothberg   │ *
+ ━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 
 ## Files
 
@@ -375,7 +393,7 @@ If you omit the optional arguments from `inc`,
 the patch number will be incremented.
 Use `help inc` to get more information.
 
-`open Cargo.toml | inc package.version | save Cargo_new.toml | ls`
+`open Cargo.toml | inc package.version | save Cargo_new.toml`
 
 ```
 ━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━
