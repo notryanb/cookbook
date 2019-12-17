@@ -1,9 +1,9 @@
 # Nu Cookbook
 
-This Nu Cookbook is a collection of examples to help you get the most out of using Nushell.
-Unless otherwise noted,
-all _recipies_ are available in the `0.5.0` version of Nu with `--all-features` enabled.
-Recipies marked with  `master-only` are available when nushell is built from source using the `master` branch.
+You can via it live at [www.nushell.sh/cookbook/](https://www.nushell.sh/cookbook/).
 
-While this cookbook is a series of examples to help get you started,
-you may want to review the official [nushell book](https://www.nushell.sh/book/) for a more comprehensive walkthrough.
+In contrary to the [Nu Book](https://www.nushell.sh/book/), cookbook doesn't cover all the basic concepts and ideas behind Nu. It is more a addition to help you get the most out of using Nushell. This includes:
+
+* Answering the question "How do I do X in Nu?"
+* Multiple ways of expressing the same pipelines
+* Some cool oneliners
