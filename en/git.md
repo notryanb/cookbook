@@ -47,7 +47,7 @@ Output
 
 ---
 
-### View git comitter activity as a `histogram` *master-only*
+### View git comitter activity as a `histogram`
 
 `git log "--pretty=format:%h<nu>%aN<nu>%s<nu>%aD" | lines | split-column "<nu>" sha1 committer desc  merged_at | histogram committer merger | sort-by merger | reverse`
 

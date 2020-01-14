@@ -9,13 +9,9 @@ link_next: /en/native_shell_programs.html
 
 Nu offers the ability to do some basic parsing.
 
-
 How to parse an arbitrary pattern from a string of text into a multi-column table.
-Note that for version `0.5.0` the parsing command is called `read`, while the next version of nushell it will be renamed to `parse`.
 
-`cargo search shells --limit 10 | lines | read "{crate_name} = {version} #{description}"`
-
-`cargo search shells --limit 10 | lines | parse "{crate_name} = {version} #{description}"` *master-only*
+`cargo search shells --limit 10 | lines | parse "{crate_name} = {version} #{description}"`
 
 Output
 
