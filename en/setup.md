@@ -16,7 +16,7 @@ however setting up your nu configuration will make it much easier as these are s
 
 ### Configure your path
 
-`config --set [path $nu:path]`
+`config --set [path $nu.path]`
 
 Output
 
@@ -32,7 +32,7 @@ Output
 
 ### Configure your environment variables
 
-`config --set [env $nu:env]`
+`config --set [env $nu.env]`
 
 Output
 
@@ -48,7 +48,7 @@ Output
 
 ### How to list your paths
 
-`echo $nu:path` 
+`echo $nu.path` 
 
 or 
 
@@ -85,7 +85,7 @@ Output
 
 ### How to list your environment variables
 
-`echo $nu:env | pivot` 
+`echo $nu.env | pivot` 
 
 or 
 
