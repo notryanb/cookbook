@@ -85,6 +85,32 @@ Output
 
 ---
 
+### Find and kill a hanging process
+
+Sometimes a process doesn't shut down correctly. Using `ps` it's fairly easy to find the pid of this process:
+
+`ps | where name == node`
+
+Output
+
+```
+━━━━━━━┯━━━━━━┯━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━
+ pid   │ name │ status  │ cpu    │ mem     │ virtual 
+───────┼──────┼─────────┼────────┼─────────┼─────────
+ 15447 │ node │ Running │ 0.0000 │ 18.5 MB │  4.7 GB 
+━━━━━━━┷━━━━━━┷━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━
+```
+
+This process can be sent the kill signal in a one-liner:
+
+`ps | where name == node | format "{pid}" | kill -9 $it`
+
+Notes: 
+- `format "{pid}"` is necessary for now since a value of type Int (pid) can not be converted to a string yet, which is necessary for $it. This has been fixed with 0.8.1. With version 0.8.1 you can simplify this by simply using `get pid`.
+- `kill` is Linux/Unix specific command, it is not built-in to nu.
+
+---
+
 ### Pipeline content to clipboard
 
 Add the output of a pipeline to your clipboard.
