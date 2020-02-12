@@ -80,7 +80,7 @@ You can alternatively do this using `parse`.
 
 ---
 
-### Word occurence count with Ripgrep
+### Word occurrence count with Ripgrep
 
 Suppose you would like to check the number of lines the string "Tagged" appears per file in the nushell project,
 then sort those files by largest line count.
