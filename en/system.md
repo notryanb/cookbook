@@ -40,7 +40,7 @@ Output
 
 ### View all directories in the current directory
 
-`ls | where type == Directory`
+`ls | where type == Dir`
 
 Output
 
@@ -48,19 +48,19 @@ Output
 ━━━━┯━━━━━━━━━━━┯━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━
  #  │ name      │ type      │ readonly │ size   │ created      │ accessed     │ modified
 ────┼───────────┼───────────┼──────────┼────────┼──────────────┼──────────────┼──────────────
-  0 │ .azure    │ Directory │          │   —    │ 2 months ago │ 3 weeks ago  │ 3 weeks ago
-  1 │ .cargo    │ Directory │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
-  2 │ .circleci │ Directory │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
-  3 │ .git      │ Directory │          │ 4.1 KB │ 2 months ago │ a week ago   │ a week ago
-  4 │ .github   │ Directory │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
-  5 │ assets    │ Directory │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
-  6 │ debian    │ Directory │          │ 4.1 KB │ 2 months ago │ a month ago  │ a month ago
-  7 │ docker    │ Directory │          │ 4.1 KB │ 2 months ago │ 3 weeks ago  │ 3 weeks ago
-  8 │ docs      │ Directory │          │   —    │ 2 months ago │ 3 weeks ago  │ 3 weeks ago
-  9 │ images    │ Directory │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
- 10 │ src       │ Directory │          │ 4.1 KB │ 2 months ago │ a week ago   │ a week ago
- 11 │ target    │ Directory │          │   —    │ a week ago   │ a week ago   │ a week ago
- 12 │ tests     │ Directory │          │ 4.1 KB │ 2 months ago │ a week ago   │ a week ago
+  0 │ .azure    │ Dir │          │   —    │ 2 months ago │ 3 weeks ago  │ 3 weeks ago
+  1 │ .cargo    │ Dir │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
+  2 │ .circleci │ Dir │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
+  3 │ .git      │ Dir │          │ 4.1 KB │ 2 months ago │ a week ago   │ a week ago
+  4 │ .github   │ Dir │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
+  5 │ assets    │ Dir │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
+  6 │ debian    │ Dir │          │ 4.1 KB │ 2 months ago │ a month ago  │ a month ago
+  7 │ docker    │ Dir │          │ 4.1 KB │ 2 months ago │ 3 weeks ago  │ 3 weeks ago
+  8 │ docs      │ Dir │          │   —    │ 2 months ago │ 3 weeks ago  │ 3 weeks ago
+  9 │ images    │ Dir │          │   —    │ 2 months ago │ 2 months ago │ 2 months ago
+ 10 │ src       │ Dir │          │ 4.1 KB │ 2 months ago │ a week ago   │ a week ago
+ 11 │ target    │ Dir │          │   —    │ a week ago   │ a week ago   │ a week ago
+ 12 │ tests     │ Dir │          │ 4.1 KB │ 2 months ago │ a week ago   │ a week ago
 ━━━━┷━━━━━━━━━━━┷━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━
 ```
 
