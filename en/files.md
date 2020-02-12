@@ -79,3 +79,32 @@ You can alternatively do this using `parse`.
 `open bands.txt | parse "{Band}:{Album}:{Year}" | skip 1 | sort-by Year`
 
 ---
+
+### Word occurence count with Ripgrep
+
+Suppose you would like to check the number of lines the string "Tagged" appears per file in the nushell project,
+then sort those files by largest line count.
+
+```
+rg -c Tagged | lines | split-column ":" file line_count | str --to-int line_count | sort-by line_count | reverse
+```
+
+Output
+
+```
+───┬──────────────────────────────────────┬────────────
+ # │ file                                 │ line_count
+───┼──────────────────────────────────────┼────────────
+ 0 │ crates/nu-source/src/meta.rs         │         27
+ 1 │ crates/nu-protocol/src/value/dict.rs │         10
+ 2 │ src/commands/config.rs               │         10
+ 3 │ crates/nu_plugin_sys/src/sys.rs      │         10
+ 4 │ src/commands/from_bson.rs            │          9
+ 5 │ src/utils/data_processing.rs         │          9
+ 6 │ src/deserializer.rs                  │          8
+ 7 │ src/commands/histogram.rs            │          7
+ 8 │ src/commands/split_column.rs         │          6
+ 9 │ src/data/dict.rs                     │          6
+───┴──────────────────────────────────────┴────────────
+... example output limited due to large output
+```
