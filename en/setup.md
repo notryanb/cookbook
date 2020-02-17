@@ -1,9 +1,9 @@
 ---
 layout: content
 title: Setup
-prev: Overview
+prev: Table of Contents
 next: Help
-link_prev: /
+link_prev: /en/table_of_contents.html
 link_next: /en/help.html
 ---
 

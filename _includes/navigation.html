@@ -1,53 +1,64 @@
 <nav>
-    <span style="cursor:pointer;color:#51cd28" onclick="openNav()">&#9776;</span>
-    <a href="{{ '/' | relative_url }}">Cookbook</a>
-    <a class="{% if include.current == 'Other Books' %} active {% endif %}" href="{{ '/books.html' | relative_url }}">Books</a>
-    <div class="right">
-        <a href="https://www.nushell.sh" class="button"><span class="no-mobile">Visit our </span>Website</a>
-    </div>
+  <span style="cursor:pointer;color:#51cd28" onclick="openNav()">&#9776;</span>
+  <a href="{{ '/' | relative_url }}">Cookbook</a>
+  <a class="{% if include.current == 'Other Books' %} active {% endif %}"
+    href="{{ '/books.html' | relative_url }}">Books</a>
+  <div class="right">
+    <a href="https://www.nushell.sh" class="button"><span class="no-mobile">Visit our </span>Website</a>
+  </div>
 </nav>
 
 <div id="Sidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <a href="#" class="hide" data-toggle="#list_en">English</a>
-          <ol id="list_en">
-            <li><a href="{{ '/en/setup.html' | relative_url }}">Setup</a></li>
-            <li><a href="{{ '/en/help.html' | relative_url }}">Help</a></li>
-            <li><a href="{{ '/en/system.html' | relative_url }}">System</a></li>
-            <li><a href="{{ '/en/parsing.html' | relative_url }}">Parsing</a></li>
-            <li><a href="{{ '/en/native_shell_programs.html' | relative_url }}">Native Shell Programs</a></li>
-            <li><a href="{{ '/en/files.html' | relative_url }}">Files</a></li>
-            <li><a href="{{ '/en/git.html' | relative_url }}">Git</a></li>
-            <li><a href="{{ '/en/http.html' | relative_url }}">HTTP</a></li>
-            <li><a href="{{ '/en/misc.html' | relative_url }}">Misc</a></li>
-          </ol>
+  <a id="lang_en" href="#" class="hide" data-toggle="#list_en" onclick="changeColor(this.id)">English</a>
+  <ol id="list_en">
+    <li><a href="{{ '/en/setup.html' | relative_url }}">Setup</a></li>
+    <li><a href="{{ '/en/help.html' | relative_url }}">Help</a></li>
+    <li><a href="{{ '/en/system.html' | relative_url }}">System</a></li>
+    <li><a href="{{ '/en/parsing.html' | relative_url }}">Parsing</a></li>
+    <li><a href="{{ '/en/native_shell_programs.html' | relative_url }}">Native Shell Programs</a></li>
+    <li><a href="{{ '/en/files.html' | relative_url }}">Files</a></li>
+    <li><a href="{{ '/en/git.html' | relative_url }}">Git</a></li>
+    <li><a href="{{ '/en/http.html' | relative_url }}">HTTP</a></li>
+    <li><a href="{{ '/en/misc.html' | relative_url }}">Misc</a></li>
+  </ol>
+  <br>
+  Click to expand language-specific table of contents
 </div>
 
 <script>
-        function openNav() {
-          document.getElementById("Sidenav").style.width = "220px";
-          document.getElementById("main").style.marginLeft = "220px";
-        }
-  
-        function closeNav() {
-          document.getElementById("Sidenav").style.width = "0";
-          document.getElementById("main").style.marginLeft = "0";
-        }
+  function openNav() {
+    document.getElementById("Sidenav").style.width = "220px";
+    document.getElementById("main").style.marginLeft = "220px";
+  }
+
+  function closeNav() {
+    document.getElementById("Sidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+  function changeColor(elementID) {
+    if (document.getElementById(elementID).style.color == "rgb(136, 136, 136)") {
+      document.getElementById(elementID).style.color = "#51cd28"
+    } else {
+      document.getElementById(elementID).style.color = "#888888"
+    }
+  }
 </script>
 <script>
-  $('[data-toggle]').on('click', function(){
-  var id = $(this).data("toggle"),
+  $('[data-toggle]').on('click', function () {
+    var id = $(this).data("toggle"),
       $object = $(id),
       className = "open";
 
-  if ($object) {
-    if ($object.hasClass(className)) {
-      $object.removeClass(className)
-    } else {
-      $object.addClass(className)
-      $object.replace(">", "^")
+    if ($object) {
+      if ($object.hasClass(className)) {
+        $object.removeClass(className)
+      } else {
+        $object.addClass(className)
+        $object.replace(">", "^")
+      }
     }
-  }
-});
+  });
 </script>
