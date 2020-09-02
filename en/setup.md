@@ -16,7 +16,7 @@ however setting up your nu configuration will make it much easier as these are s
 
 ### Configure your path
 
-`config --set [path $nu.path]`
+`config set path $nu.path`
 
 Output
 
@@ -32,7 +32,7 @@ Output
 
 ### Configure your environment variables
 
-`config --set [env $nu.env]`
+`config set env $nu.env`
 
 Output
 
